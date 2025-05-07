@@ -1,0 +1,26 @@
+
+
+{ "student" : {
+    "id": 2,
+	"name": "luis",
+    "tutor": {
+        "id": 3,
+        "nombre": "lol",
+        "identificacion": "asdsadsad"
+    },
+
+	"Carrera" : "Software", 
+	"notas": [{"asignatura": "matematicas", "nota": 3},
+              {"asignatura": "lengua", "nota": 3},
+              {"asignatura": "ingles", "nota": 3}],
+
+    "Dirrecion" : {
+        "detalle": "detalle",
+        "ciudad": {
+            "nombre": "Manta",
+            "direccion_1": "nose",
+            "direccion_2": "nose"
+        }
+    }         
+	}
+}
