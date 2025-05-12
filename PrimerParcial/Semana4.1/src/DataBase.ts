@@ -1,18 +1,14 @@
-import {AppDataSource} from "./DataSource";
-import "reflect-metadata"
+import {AppDataSource} from "./data-source"
+import 'reflect-metadata';
 
-
-
-export const InitDB = async () => {
+export const initDatabase = async () => {
     try {
+        // await AppDataSource.initialize();
         await AppDataSource.initialize();
-        console.log("Database initialized successfully");
-        return AppDataSource; // Retorna la instancia de AppDataSource para su uso posterior 
-    } catch (error) {
-        console.error("Error initializing database:", error);
-        throw error; // Lanza el error para que pueda ser manejado por el llamador
+        console.log("Database initialized successfully.");
+        return AppDataSource;
+    } catch (ex) {
+        console.error("Error initializing database:", ex);
+        throw ex; // Rethrow the error to be handled by the caller
     }
 }
-
-
-

@@ -1,17 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.InitDB = void 0;
-const DataSource_1 = require("./DataSource");
+exports.initDatabase = void 0;
+const data_source_1 = require("./data-source");
 require("reflect-metadata");
-const InitDB = async () => {
+const initDatabase = async () => {
     try {
-        await DataSource_1.AppDataSource.initialize();
-        console.log("Database initialized successfully");
-        return DataSource_1.AppDataSource; // Retorna la instancia de AppDataSource para su uso posterior 
+        // await AppDataSource.initialize();
+        await data_source_1.AppDataSource.initialize();
+        console.log("Database initialized successfully.");
+        return data_source_1.AppDataSource;
     }
-    catch (error) {
-        console.error("Error initializing database:", error);
-        throw error; // Lanza el error para que pueda ser manejado por el llamador
+    catch (ex) {
+        console.error("Error initializing database:", ex);
+        throw ex; // Rethrow the error to be handled by the caller
     }
 };
-exports.InitDB = InitDB;
+exports.initDatabase = initDatabase;

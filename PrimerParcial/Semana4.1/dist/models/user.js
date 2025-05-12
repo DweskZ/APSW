@@ -9,27 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
+exports.user = void 0;
 const typeorm_1 = require("typeorm");
-// Definición de la entidad User
-// Esta entidad representa la tabla "users" en la base de datos
-let User = class User {
+let user = class user {
 };
-exports.User = User;
+exports.user = user;
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)() // Decorador que indica que esta propiedad es la clave primaria y se generará automáticamente
-    ,
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], User.prototype, "id", void 0);
-__decorate([
-    (0, typeorm_1.Column)() // Decorador que indica que esta propiedad es una columna en la tabla
-    ,
-    __metadata("design:type", String)
-], User.prototype, "name", void 0);
+], user.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], User.prototype, "email", void 0);
-exports.User = User = __decorate([
-    (0, typeorm_1.Entity)() // Decorador que indica que esta clase es una entidad de base de datos
-], User);
+], user.prototype, "nombre", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], user.prototype, "correo", void 0);
+exports.user = user = __decorate([
+    (0, typeorm_1.Entity)()
+], user);

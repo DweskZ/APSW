@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const DataBase_1 = require("./DataBase");
-const CRUD_1 = require("./CRUD");
+const crud_1 = require("./crud");
+const database_1 = require("./database");
 async function main() {
-    await DataBase_1.InitDB; // Inicializa la base de datos
-    await (0, CRUD_1.insertUser)("Juan", "lf@gmail.com"); // Inserta un nuevo usuario en la base de datos
-    console.log("Usuario insertado correctamente"); // Mensaje de éxito
+    await (0, database_1.initDatabase)();
+    const walter = await (0, crud_1.insertarUser)("walter", " walterG@gmail.com");
+    console.log(walter);
 }
-main(); // Llama a la función principal para ejecutar el script 
+main();

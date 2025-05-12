@@ -1,18 +1,33 @@
-import {User} from './models/user';
-import { AppDataSource } from './DataSource'; // Importa la fuente de datos
+import {user} from "./models/user";
+import {AppDataSource} from './data-source';
 
-export const insertUser = async (nombre: string, email: string) => {
-    const user1 = new User(); // Crea una nueva instancia de la entidad User
-    user1.name = nombre; // Asigna el nombre al usuario
-    user1.email = email; // Asigna el email al usuario
-    return await AppDataSource.manager.save(user1); // Guarda el nuevo usuario en la base de datos
+// Funciones CRUD para la entidad User
+export const insertarUser = async (nombre: string, correo: string) => {
+    const user1 = new user();
+    user1.correo = correo;
+    user1.nombre = nombre;
+    return await AppDataSource.manager.save((user1))
 }
-
-
-export const consultarUsuarios = async () => {
-    return await AppDataSource.manager.find(User); // Devuelve todos los usuarios de la base de datos
+// Función para obtener todos los usuarios
+export const obtenerUsers = async () => {
+    return await AppDataSource.manager.find(user);
 }
+// Función para obtener un usuario por su ID
+export const obtenerUser = async (id: number) => {
+    return await AppDataSource.manager.findOne(user, {
+        where: { id}
+    });
+}   
 
-export const consultaIndividual = async (id: number) => {
-    return await AppDataSource.manager.findOneBy(User, { id }); // Devuelve un usuario específico por su ID
+// Funcion para actualizar un usuario
+export const actualizarUser = async (id: number, nombre: string, correo: string) => { 
+    const user2 = await obtenerUser(id);
+    if (user2) {
+        user2.nombre = nombre;
+        user2.correo = correo;
+        return await AppDataSource.manager.save(user2);
+    } else {
+        throw new Error("User not found");
+    }
+
 }

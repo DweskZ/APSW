@@ -1,14 +1,10 @@
-import {InitDB} from "./DataBase";
-
-import {insertUser} from "./CRUD";
-
-
+import {insertarUser} from './crud';
+import {initDatabase} from './database';
 
 async function main() {
-    await InitDB; // Inicializa la base de datos
-    await insertUser("Juan", "lf@gmail.com"); // Inserta un nuevo usuario en la base de datos
-    console.log("Usuario insertado correctamente"); // Mensaje de éxito
+    await initDatabase()
+    const walter = await insertarUser("walter"," walterG@gmail.com")
+    console.log(walter)
+}
 
-}   
-
-main(); // Llama a la función principal para ejecutar el script 
+main()
