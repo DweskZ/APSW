@@ -8,3 +8,11 @@ export const insertUser = async (nombre: string, email: string) => {
     return await AppDataSource.manager.save(user1); // Guarda el nuevo usuario en la base de datos
 }
 
+
+export const consultarUsuarios = async () => {
+    return await AppDataSource.manager.find(User); // Devuelve todos los usuarios de la base de datos
+}
+
+export const consultaIndividual = async (id: number) => {
+    return await AppDataSource.manager.findOneBy(User, { id }); // Devuelve un usuario específico por su ID
+}
