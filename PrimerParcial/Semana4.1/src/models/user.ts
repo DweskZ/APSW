@@ -1,4 +1,5 @@
-import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import { view } from "./view";
 
 @Entity()
 export class user{
@@ -8,4 +9,6 @@ export class user{
     nombre!: string;
     @Column()
     correo!: string;
+    @OneToMany(() => view, (view:view) => view.user)
+    views!: view[]; // Relación uno a muchos con la entidad view
 }

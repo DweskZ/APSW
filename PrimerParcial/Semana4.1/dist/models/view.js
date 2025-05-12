@@ -9,28 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.user = void 0;
+exports.view = void 0;
 const typeorm_1 = require("typeorm");
-const view_1 = require("./view");
-let user = class user {
+const user_1 = require("./user");
+let view = class view {
 };
-exports.user = user;
+exports.view = view;
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], user.prototype, "id", void 0);
+], view.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], user.prototype, "nombre", void 0);
+], view.prototype, "vista", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], user.prototype, "correo", void 0);
-__decorate([
-    (0, typeorm_1.OneToMany)(() => view_1.view, (view) => view.user),
-    __metadata("design:type", Array)
-], user.prototype, "views", void 0);
-exports.user = user = __decorate([
+    (0, typeorm_1.ManyToOne)(() => user_1.user, (user) => user.views),
+    __metadata("design:type", user_1.user)
+], view.prototype, "user", void 0);
+exports.view = view = __decorate([
     (0, typeorm_1.Entity)()
-], user);
+], view);
