@@ -1,18 +1,18 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { NavegacionSlide } from './NavegacionSlide';
 
 @Entity()
 export class Slide {
     @PrimaryGeneratedColumn()
-    id: number;
+    id!: number;
 
     @Column()
-    titulo: string;
+    titulo!: string;
 
     @Column("text")
-    contenido: string;
+    contenido!: string;
 
     @OneToMany(() => NavegacionSlide, (nav) => nav.slide)
-    navegaciones: NavegacionSlide[];
+    navegaciones!: NavegacionSlide[];
 
 }

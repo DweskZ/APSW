@@ -1,5 +1,5 @@
 // src/endpoints/slide.ts
-import { Router } from "express";
+import { Router, Request, Response } from "express";
 import { AppDataSource } from "../data-source";
 import { Slide } from "../models/Slide";
 

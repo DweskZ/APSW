@@ -4,11 +4,11 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 export class ParametroIdeal {
         @PrimaryGeneratedColumn()
-        id: number;
+        id!: number;
 
         @Column()
-        nombre: string;
+        nombre!: string;
 
         @Column("float")
-        valorIdeal: number;
+        valorIdeal!: number;
     }

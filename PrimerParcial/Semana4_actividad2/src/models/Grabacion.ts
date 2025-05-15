@@ -1,4 +1,4 @@
-import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import { Feedback }  from "./Feedback";
 import { NavegacionSlide } from "./NavegacionSlide"
  
@@ -6,21 +6,21 @@ import { NavegacionSlide } from "./NavegacionSlide"
 @Entity()
 export class Grabacion { 
     @PrimaryGeneratedColumn()
-    id: number;
+    id!: number;
 
     @Column() 
-    usuarioId: number;
+    usuarioId!: number;
 
     @Column()
-    presentacionId: number;
+    presentacionId!: number;
 
     @Column("timestamp")
-    fecha: Date; 
+    fecha!: Date; 
 
     @OneToMany(() => Feedback, (feedback) => feedback.grabacion)
-    feedbacks: Feedback[];
+    feedbacks!: Feedback[];
 
     @OneToMany(() => NavegacionSlide, (nav) => nav.grabacion)
-    navegaciones = NavegacionSlide[];
+    navegaciones! : NavegacionSlide[];
 }
 

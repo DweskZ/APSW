@@ -5,15 +5,15 @@ import { Slide } from "./Slide"
 @Entity()
 export class NavegacionSlide {
     @PrimaryGeneratedColumn()
-    id: number;
+    id!: number;
 
     @ManyToOne(() => Grabacion, (grabacion) => grabacion.navegaciones)
-    grabacion: Grabacion;
+    grabacion!: Grabacion;
 
     @ManyToOne(() => Slide, (slide) => slide.navegaciones)
-    slide: Slide;
+    slide!: Slide;
 
     @Column("timestamp")
-    tiempoAcceso: Date;
+    tiempoAcceso!: Date;
 
 }

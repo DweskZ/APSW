@@ -1,5 +1,5 @@
 // src/endpoints/parametroIdeal.ts
-import { Router } from "express";
+import { Router, Request, Response } from "express";
 import { AppDataSource } from "../data-source";
 import { ParametroIdeal } from "../models/ParametroIdeal";
 

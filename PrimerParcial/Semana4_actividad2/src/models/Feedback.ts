@@ -1,14 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { Grabacion } from './Grabacion'; 
 
 @Entity()
 export class Feedback {
     @PrimaryGeneratedColumn()
-    id: number;
+    id!: number;
 
-    @ManyToOne(() => Grabacion, (grabacion) => grabacion.feedbacks)
-    grabacion: Grabacion;
+    @ManyToOne(() => Grabacion, (grabacion: Grabacion) => grabacion.feedbacks)
+    grabacion!: Grabacion;
 
     @Column("text")
-    contenido: string;
+    contenido!: string;
 }
