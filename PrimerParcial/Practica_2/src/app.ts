@@ -1,7 +1,7 @@
 import express from "express";
 import { AppDataSource } from "./data-source";
 import grabacionRoutes from "./crud/grabacion_crud";
-import feedbackRoutes from "./crud/feedback_crud";
+import feedbackRouter from "./crud/feedback_crud";
 import slideRoutes from "./crud/slide_crud";
 import parametroRoutes from "./crud/parametro_ideal_crud";
 import navegacionRoutes from "./crud/navegacion_crud";
@@ -16,7 +16,7 @@ async function main() {
   app.use(express.json());
 
   app.use("/api", grabacionRoutes);
-  app.use("/api", feedbackRoutes);
+  app.use("/api", feedbackRouter);
   app.use("/api", slideRoutes);
   app.use("/api", parametroRoutes);
   app.use("/api", navegacionRoutes);
