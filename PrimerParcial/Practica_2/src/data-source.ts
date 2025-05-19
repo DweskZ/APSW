@@ -13,7 +13,7 @@ export const AppDataSource = new DataSource({
   port: 5432,
   username: "postgres",
   password: "postgres",
-  database: "exposia",
+  database: "exposia_db",
   synchronize: true,
   logging: false,
   entities: [Grabacion, NavegacionSlide, Feedback, ParametroIdeal, Slide],
