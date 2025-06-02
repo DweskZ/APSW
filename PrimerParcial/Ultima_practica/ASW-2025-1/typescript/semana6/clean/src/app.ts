@@ -1,15 +1,15 @@
-import 'reflect-metadata'; // Necesario para TypeORM
-import 'dotenv/config';
-import { envs } from './config/envs'; // Variables de entorno (PORT, PUBLIC_PATH)
-import { AppRoutes } from './presentation/routes'; // Rutas globales
-import { Server } from './presentation/server'; // Clase del servidor Express
-import { initializeTypeORM } from './data/typeorm/typeorm.config'; // Conexión a DB
+import 'reflect-metadata';
+import { envs } from './config/envs';
+import { AppRoutes } from './presentation/routes';
+import { Server } from './presentation/server';
+import { initializeTypeORM } from './data/typeorm/typeorm.config';
 
-(async () => {
+(async()=> {
   main();
 })();
 
 async function main() {
+  // Inicializar TypeORM
   try {
     await initializeTypeORM();
     console.log('Database initialized');

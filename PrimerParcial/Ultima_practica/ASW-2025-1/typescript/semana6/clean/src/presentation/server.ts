@@ -1,4 +1,3 @@
-// src/presentation/server.ts
 import express, { Router } from 'express';
 import compression from 'compression';
 import path from 'path';
@@ -9,7 +8,9 @@ interface Options {
   public_path?: string;
 }
 
+
 export class Server {
+
   private app = express();
   private readonly port: number;
   private readonly publicPath: string;
@@ -22,21 +23,35 @@ export class Server {
     this.routes = routes;
   }
 
+  
+  
   async start() {
-    this.app.use(express.json());
-    this.app.use(express.urlencoded({ extended: true }));
-    this.app.use(compression());
+    
 
-    this.app.use(express.static(this.publicPath));
-    this.app.use(this.routes);
+    //* Middlewares
+    this.app.use( express.json() ); // raw
+    this.app.use( express.urlencoded({ extended: true }) ); // x-www-form-urlencoded
+    this.app.use( compression() )
 
+    //* Public Folder
+    this.app.use( express.static( this.publicPath ) );
+
+
+    //* Routes
+    this.app.use( this.routes );
+
+
+    //* SPA
     this.app.get('*', (req, res) => {
-      const indexPath = path.join(__dirname + `../../../${this.publicPath}/index.html`);
+      const indexPath = path.join( __dirname + `../../../${ this.publicPath }/index.html` );
       res.sendFile(indexPath);
     });
+    
 
     this.app.listen(this.port, () => {
-      console.log(`Server running on port ${this.port}`);
+      console.log(`Server running on port ${ this.port }`);
     });
+
   }
+
 }
