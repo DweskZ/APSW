@@ -1,22 +1,34 @@
-# Practica 3 Aplicaciones para el servidor web 
+# Práctica 3 - Aplicaciones para el Servidor Web
 
-Se inicializaron todas las entidades, la entidad con la que trabajamos fue Grabacion.entity. 
-Se creo el caso de uso, asi mismo se llego hasta hacer un post y un get con esta entidad. 
+## 🧠 Entidad trabajada
 
-Primero, inicializamos con el docker compose up el contenedor docker con nuestra base de datos
+Se trabajó con la entidad `GrabacionEntity`, aplicando una arquitectura limpia en N-Capas.  
+Se implementaron los casos de uso, repositorio, datasource y rutas HTTP para los métodos `POST` y `GET`.
 
-Se cambio la sincronizacion a true en la configuracion del datasource
+---
 
-Comenzamos con un npm install y continuamos con un npm run dev
+## ⚙️ Configuración inicial
 
-Entonces con la siguiente ruta en postman: 
+1. Se levantó un contenedor con PostgreSQL usando `docker compose up`.
+2. Se modificó `synchronize: true` en el archivo `typeorm.config.ts` para autogenerar las tablas.
+3. Se instalaron dependencias y se ejecutó el servidor:
 
-http://localhost:3000/api/grabaciones
+```bash
+npm install
+npm run dev
+```
 
-Definiendo en headers, una fila de key content-type / y en value Application/json
+---
 
-Pasamos el siguiente raw JSON 
+## 📬 Pruebas con Postman (TypeORM)
 
+### 📤 POST `http://localhost:3000/api/grabaciones`
+
+- **Headers**:
+  - `Content-Type: application/json`
+- **Body (raw JSON)**:
+
+```json
 {
   "usuarioId": 1,
   "presentacionId": 1,
@@ -24,17 +36,113 @@ Pasamos el siguiente raw JSON
   "fechaGrabacion": "2025-06-02T20:00:00.000Z",
   "nombreArchivo": "grabacion-clase1.mp3"
 }
+```
 
-Tendremos que ver en respuesta algo como 
+### ✅ Respuesta esperada:
 
+```json
 {
-    "id": 1,
-    "usuarioId": 1,
-    "presentacionId": 1,
-    "archivoAudio": "audio1.mp3",
-    "fechaGrabacion": "2025-06-02T20:00:00.000Z",
-    "nombreArchivo": "grabacion-clase1.mp3",
-    "navegaciones": []
+  "id": 1,
+  "usuarioId": 1,
+  "presentacionId": 1,
+  "archivoAudio": "audio1.mp3",
+  "fechaGrabacion": "2025-06-02T20:00:00.000Z",
+  "nombreArchivo": "grabacion-clase1.mp3",
+  "navegaciones": []
 }
+```
 
-![alt text](image.png)
+![Postman TypeORM](image.png)
+
+---
+
+## 🔁 Cambio a Sequelize
+
+### 📦 Instalación:
+
+```bash
+npm install sequelize pg pg-hstore
+npm install --save-dev @types/sequelize
+```
+
+### 📁 Estructura:
+
+- Se creó un nuevo archivo `grabacion.sequelize.datasource.ts` en `infrastructure/datasource/`.
+- Se creó el modelo Sequelize en `data/sequelize/models/grabacion.model.ts`.
+- Se configuró la conexión en `data/sequelize/sequelize.config.ts`.
+
+### 🔁 Para alternar entre TypeORM y Sequelize:
+
+En el archivo `presentation/grabacion/routes.ts`, comentar o descomentar la línea del repositorio:
+
+```ts
+// TypeORM
+// const repo = new GrabacionTypeOrmDatasourceImpl();
+
+// Sequelize
+const repo = new GrabacionSequelizeDatasource();
+```
+
+---
+
+## 🧪 Pruebas con Sequelize
+
+### 📤 POST `http://localhost:3000/api/grabaciones`
+
+```json
+{
+  "usuarioId": 99,
+  "presentacionId": 88,
+  "archivoAudio": "secuela.mp3",
+  "fechaGrabacion": "2025-06-02T22:00:00.000Z",
+  "nombreArchivo": "segunda.mp3"
+}
+```
+
+### ✅ Respuesta esperada:
+
+```json
+{
+  "id": 2,
+  "usuarioId": 99,
+  "presentacionId": 88,
+  "archivoAudio": "secuela.mp3",
+  "fechaGrabacion": "2025-06-03T03:00:00.000Z",
+  "nombreArchivo": "segunda.mp3",
+  "navegaciones": []
+}
+```
+
+![Postman Sequelize POST](image-1.png)
+
+### 🔍 GET por ID
+
+```http
+GET http://localhost:3000/api/grabaciones/2
+```
+
+![Postman Sequelize GET](image-2.png)
+
+---
+
+## 📌 Conclusión
+
+El proyecto cumple con:
+- Separación de capas (dominio, infraestructura, presentación).
+- Uso de dos ORMs (TypeORM y Sequelize) de forma intercambiable.
+- Pruebas realizadas con Postman para verificar el funcionamiento completo de la arquitectura REST.
+
+---
+
+## 🧭 Instrucciones para ejecutar el proyecto
+
+```bash
+# Inicializar base de datos
+docker-compose up -d
+
+# Instalar dependencias
+npm install
+
+# Ejecutar servidor
+npm run dev
+```

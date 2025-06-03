@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { GrabacionController } from './controller';
 import { CreateGrabacionUseCase } from '../../../src/domain/use-cases/grabacion/create-grabacion.use.case';
 import { GrabacionTypeOrmDatasourceImpl } from '../../../src/infrastructure/datasource/grabacion.typeorm.datasource';
+import { GrabacionSequelizeDatasource } from '../../infrastructure/datasource/grabacion.sequelize.datasource';
 
 export class GrabacionRoutes {
 
@@ -9,7 +10,8 @@ export class GrabacionRoutes {
     const router = Router();
 
     // Inyección de dependencias
-    const repo = new GrabacionTypeOrmDatasourceImpl();
+    const repo = new GrabacionSequelizeDatasource(); // Cambia aquí
+    // const repo = new GrabacionTypeOrmDatasourceImpl();
     const useCase = new CreateGrabacionUseCase(repo);
     const controller = new GrabacionController(useCase);
 
