@@ -1,0 +1,373 @@
+{
+  "info": {
+    "name": "ExposIA API – Práctica 1 (actualizada)",
+    "_postman_id": "b05f14a0-1c65-415e-bb07-a2949debb1b7",
+    "description": "Colección con payload válido de Grabación (urlAudio con https://example.com/...).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000/api/v1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Usuarios",
+      "item": [
+        {
+          "name": "POST /usuarios",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Dwesk\",\n  \"email\": \"dwesk@mail.com\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/usuarios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "usuarios"
+              ]
+            },
+            "description": "Crear usuario"
+          },
+          "response": []
+        },
+        {
+          "name": "GET /usuarios",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/usuarios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "usuarios"
+              ]
+            },
+            "description": "Listar usuarios"
+          },
+          "response": []
+        },
+        {
+          "name": "GET /usuarios/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/usuarios/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "usuarios",
+                ":id"
+              ]
+            },
+            "description": "Usuario por ID"
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /usuarios/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rol\": \"coach\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/usuarios/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "usuarios",
+                ":id"
+              ]
+            },
+            "description": "Actualizar usuario"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /usuarios/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/usuarios/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "usuarios",
+                ":id"
+              ]
+            },
+            "description": "Eliminar usuario"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Grabaciones",
+      "item": [
+        {
+          "name": "POST /grabaciones",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Demo\",\n  \"urlAudio\": \"https://example.com/files/demo.mp3\",\n  \"duracionSeg\": 120\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/grabaciones",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "grabaciones"
+              ]
+            },
+            "description": "Crear grabación"
+          },
+          "response": []
+        },
+        {
+          "name": "GET /grabaciones",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/grabaciones",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "grabaciones"
+              ]
+            },
+            "description": "Listar grabaciones"
+          },
+          "response": []
+        },
+        {
+          "name": "GET /grabaciones/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/grabaciones/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "grabaciones",
+                ":id"
+              ]
+            },
+            "description": "Grabación por ID"
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /grabaciones/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Demo edit\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/grabaciones/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "grabaciones",
+                ":id"
+              ]
+            },
+            "description": "Actualizar grabación"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /grabaciones/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/grabaciones/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "grabaciones",
+                ":id"
+              ]
+            },
+            "description": "Eliminar grabación"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "NotaSlide",
+      "item": [
+        {
+          "name": "POST /nota-slide",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"slide\": 1,\n  \"contenido\": \"Buen uso de tono\",\n  \"timestampSeg\": 30\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/nota-slide",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "nota-slide"
+              ]
+            },
+            "description": "Crear nota slide"
+          },
+          "response": []
+        },
+        {
+          "name": "GET /nota-slide",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/nota-slide",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "nota-slide"
+              ]
+            },
+            "description": "Listar notas"
+          },
+          "response": []
+        },
+        {
+          "name": "GET /nota-slide/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/nota-slide/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "nota-slide",
+                ":id"
+              ]
+            },
+            "description": "Nota por ID"
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /nota-slide/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contenido\": \"Mejor entonaci\\u00f3n\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/nota-slide/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "nota-slide",
+                ":id"
+              ]
+            },
+            "description": "Actualizar nota"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /nota-slide/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/nota-slide/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "nota-slide",
+                ":id"
+              ]
+            },
+            "description": "Eliminar nota"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
