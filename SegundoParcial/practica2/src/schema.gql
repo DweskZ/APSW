@@ -1,0 +1,125 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Usuario {
+  """ID único del usuario"""
+  id: ID!
+
+  """Nombre completo del usuario"""
+  nombre: String!
+
+  """Correo electrónico del usuario"""
+  email: String!
+
+  """Rol del usuario (ej: estudiante, docente)"""
+  rol: String!
+}
+
+type Grabacion {
+  """ID de la grabación"""
+  id: ID!
+
+  """Título de la grabación"""
+  titulo: String!
+
+  """URL del archivo de la grabación"""
+  url: String!
+
+  """Fecha de la grabación"""
+  fecha: DateTime!
+
+  """ID del usuario que subió la grabación"""
+  usuarioId: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Calificacion {
+  """ID de la calificación"""
+  id: ID!
+
+  """Puntaje otorgado"""
+  puntaje: Int!
+
+  """Comentario de la calificación"""
+  comentario: String!
+
+  """Fecha de la calificación"""
+  fecha: DateTime!
+
+  """ID de la grabación calificada"""
+  grabacionId: String!
+
+  """ID del usuario que califica"""
+  usuarioId: String!
+}
+
+type Query {
+  usuarios: [Usuario!]!
+  usuario(id: String!): Usuario!
+  grabaciones: [Grabacion!]!
+  grabacion(id: String!): Grabacion!
+  calificaciones: [Calificacion!]!
+  calificacion(id: String!): Calificacion!
+}
+
+type Mutation {
+  createUsuario(createUsuarioInput: CreateUsuarioInput!): Usuario!
+  updateUsuario(updateUsuarioInput: UpdateUsuarioInput!): Usuario!
+  removeUsuario(id: String!): Usuario!
+  createGrabacion(createGrabacionInput: CreateGrabacionInput!): Grabacion!
+  updateGrabacion(updateGrabacionInput: UpdateGrabacionInput!): Grabacion!
+  removeGrabacion(id: String!): Grabacion!
+  createCalificacion(createCalificacionInput: CreateCalificacionInput!): Calificacion!
+  updateCalificacion(updateCalificacionInput: UpdateCalificacionInput!): Calificacion!
+  removeCalificacion(id: String!): Calificacion!
+}
+
+input CreateUsuarioInput {
+  nombre: String!
+  email: String!
+  rol: String!
+}
+
+input UpdateUsuarioInput {
+  nombre: String
+  email: String
+  rol: String
+  id: String!
+}
+
+input CreateGrabacionInput {
+  titulo: String!
+  url: String!
+  fecha: String!
+  usuarioId: String!
+}
+
+input UpdateGrabacionInput {
+  titulo: String
+  url: String
+  fecha: String
+  usuarioId: String
+  id: String!
+}
+
+input CreateCalificacionInput {
+  puntaje: Int!
+  comentario: String!
+  fecha: String!
+  usuarioId: String!
+  grabacionId: String!
+}
+
+input UpdateCalificacionInput {
+  puntaje: Int
+  comentario: String
+  fecha: String
+  usuarioId: String
+  grabacionId: String
+  id: String!
+}
