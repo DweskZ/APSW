@@ -32,17 +32,28 @@ async create(createGrabacionInput: CreateGrabacionInput): Promise<Grabacion> {
   }
 
 async update(id: string, updateGrabacionInput: UpdateGrabacionInput): Promise<Grabacion> {
-  const grabacion = await this.grabacionRepository.preload(updateGrabacionInput);
+  const data: any = { ...updateGrabacionInput };
+
+  if (data.fecha) {
+    data.fecha = new Date(data.fecha);
+  }
+
+  const grabacion = await this.grabacionRepository.preload(data);
   if (!grabacion) {
     throw new NotFoundException(`Grabación con ID ${id} no encontrada`);
   }
+
   return this.grabacionRepository.save(grabacion);
 }
 
 
+
+
   async remove(id: string): Promise<Grabacion> {
-    const grabacion = await this.findOne(id);
-    await this.grabacionRepository.remove(grabacion);
-    return grabacion;
-  }
+  const grabacion = await this.findOne(id);
+  const copia = { ...grabacion }; // Clonamos para conservar los valores
+  await this.grabacionRepository.remove(grabacion);
+  return copia;
+}
+
 }

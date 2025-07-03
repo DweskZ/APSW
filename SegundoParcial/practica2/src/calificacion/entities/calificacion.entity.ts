@@ -17,7 +17,7 @@ export class Calificacion {
   comentario: string;
 
   @Column()
-  @Field(() => Date, { description: 'Fecha de la calificación' })
+  @Field(() => String, { description: 'Fecha de la calificación' })
   fecha: Date;
 
   @Column()

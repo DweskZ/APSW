@@ -35,8 +35,9 @@ export class UsuariosService {
 
 
   async remove(id: string): Promise<Usuario> {
-    const usuario = await this.findOne(id);
-    await this.usuarioRepository.remove(usuario);
-    return usuario;
-  }
+  const usuario = await this.findOne(id);
+  const eliminado = { ...usuario }; // copia segura antes de eliminar
+  await this.usuarioRepository.remove(usuario);
+  return eliminado;
+}
 }

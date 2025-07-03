@@ -16,7 +16,7 @@ export class CreateCalificacionInput {
 
   @Field(() => String)
   @IsDateString()
-  fecha: Date;
+  fecha: String;
 
   @Field(() => String)
   @IsNotEmpty()

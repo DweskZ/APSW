@@ -13,9 +13,14 @@ export class CalificacionService {
   ) {}
 
   async create(createCalificacionInput: CreateCalificacionInput): Promise<Calificacion> {
-    const nuevaCalificacion = this.calificacionRepository.create(createCalificacionInput);
-    return this.calificacionRepository.save(nuevaCalificacion);
-  }
+  const nuevaCalificacion = this.calificacionRepository.create({
+    ...createCalificacionInput,
+    fecha: new Date(createCalificacionInput.fecha as string), 
+  });
+  return this.calificacionRepository.save(nuevaCalificacion);
+}
+
+
 
   async findAll(): Promise<Calificacion[]> {
     return this.calificacionRepository.find();
@@ -36,9 +41,11 @@ async update(id: string, updateCalificacionInput: UpdateCalificacionInput): Prom
 }
 
 
-  async remove(id: string): Promise<Calificacion> {
-    const calificacion = await this.findOne(id);
-    await this.calificacionRepository.remove(calificacion);
-    return calificacion;
-  }
+async remove(id: string): Promise<Calificacion> {
+  const calificacion = await this.findOne(id);
+  const copia = { ...calificacion }; // Clona el objeto antes de eliminarlo
+  await this.calificacionRepository.remove(calificacion);
+  return copia;
+}
+
 }
