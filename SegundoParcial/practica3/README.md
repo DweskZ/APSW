@@ -65,9 +65,11 @@ practica3/
 
 ## Uso con Postman (Socket.IO)
 
-1. Importar la colección:
-   - Abrir Postman → File → Import → seleccionar `practica3.postman_collection.json`
-   - Verás la colección **Practica3WS** con tres carpetas: `Calificacion`, `Grabacion` y `Usuario`.
+**Link público de la colección :**
+
+<https://sad222-2664.postman.co/workspace/My-Workspace~e00fef93-f77d-4335-8af3-4b47eff03c3a/collection/687573cd08f5e6c8537d9648?action=share&creator=44971682>
+
+ - Verás la colección **Practica3WS** con tres carpetas: `Calificacion`, `Grabacion` y `Usuario`.
 2. Conectar a un namespace:
    - En cada petición Socket.IO, la URL debe ser:
      ```
@@ -76,10 +78,6 @@ practica3/
      http://localhost:3000/usuario
      ```
 3. Probar eventos (`create`, `list`, `update`, `delete`) según el nombre de la carpeta.
-
-**Link público de la colección (opcional):**
-
-<https://sad222-2664.postman.co/workspace/My-Workspace~e00fef93-f77d-4335-8af3-4b47eff03c3a/collection/687573cd08f5e6c8537d9648?action=share&creator=44971682>
 
 
 *Generado por Dwesk*
